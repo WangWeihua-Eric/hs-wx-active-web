@@ -1,447 +1,447 @@
 Page {
-  height: 100%;
-  background: linear-gradient(180deg, rgba(238, 238, 238, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    height: 100%;
+    background: linear-gradient(180deg, rgba(238, 238, 238, 1) 0%, rgba(255, 255, 255, 1) 100%);
 }
 
 .need-user-info-header {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 28rpx 22rpx 20rpx 22rpx;
-  box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 28rpx 22rpx 20rpx 22rpx;
+    box-sizing: border-box;
 }
 
 .need-user-info-header-img {
-  width: 439rpx;
-  height: 82rpx;
+    width: 439rpx;
+    height: 82rpx;
 }
 
 .need-user-info-header-title {
-  margin-left: 44rpx;
-  width: 222rpx;
-  height: 69rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 35px;
-  border: 1px solid rgba(255, 92, 126, 1);
-  font-size: 30rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
-  color: rgba(255, 92, 126, 1);
+    margin-left: 44rpx;
+    width: 222rpx;
+    height: 69rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 35px;
+    border: 1px solid rgba(255, 92, 126, 1);
+    font-size: 30rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    color: rgba(255, 92, 126, 1);
 }
 
 .bannerbg {
-  width: 100%;
-  height: 453rpx;
-  position: relative;
+    width: 100%;
+    height: 453rpx;
+    position: relative;
 }
 
 .banner-info {
-  position: absolute;
-  top: 0;
-  padding: 42rpx 0 58rpx 0;
-  box-sizing: border-box;
-  width: 100%;
+    position: absolute;
+    top: 0;
+    padding: 42rpx 0 58rpx 0;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .banner-info-img-block {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .banner-info-img {
-  width: 565rpx;
-  height: 267rpx;
+    width: 565rpx;
+    height: 267rpx;
 }
 
 .tip {
-  margin-top: 50rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 36rpx;
-  font-family: SourceHanSansCN-Heavy, SourceHanSansCN;
-  font-weight: 800;
-  color: rgba(255, 92, 126, 1);
+    margin-top: 50rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36rpx;
+    font-family: SourceHanSansCN-Heavy, SourceHanSansCN;
+    font-weight: 800;
+    color: rgba(255, 92, 126, 1);
 }
 
 .tip-info {
-  color: #4a4a4a;
+    color: #4a4a4a;
 }
 
 .run-info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .run-img {
-  width: 608rpx;
-  height: 367rpx;
+    width: 608rpx;
+    height: 367rpx;
 }
 
 .join {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 64rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 64rpx;
 }
 
 .join-btn {
-  width: 551rpx;
-  height: 131rpx;
-  background: rgba(255, 92, 126, 1);
-  box-shadow: 0px 7px 4px 0px rgba(255, 92, 126, 0.39);
-  border-radius: 114px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 50rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
-  color: rgba(255, 255, 255, 1);
-  text-shadow: 0px 7px 4px rgba(255, 92, 126, 0.39);
+    width: 551rpx;
+    height: 131rpx;
+    background: rgba(255, 92, 126, 1);
+    box-shadow: 0px 7px 4px 0px rgba(255, 92, 126, 0.39);
+    border-radius: 114px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 0px 7px 4px rgba(255, 92, 126, 0.39);
 }
 
 .tip-content {
-  padding: 44rpx 54rpx;
+    padding: 44rpx 54rpx;
 }
 
 .qrcode-contnet {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .qrcode {
-  width: 151rpx;
-  height: 151rpx;
+    width: 151rpx;
+    height: 151rpx;
 }
 
 .tip-item {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 20rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20rpx;
 }
 
 .tip-qrcode-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 32rpx;
-  font-family: SourceHanSansCN-Normal, SourceHanSansCN;
-  color: rgba(58, 58, 58, 1);
-  margin-bottom: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32rpx;
+    font-family: SourceHanSansCN-Normal, SourceHanSansCN;
+    color: rgba(58, 58, 58, 1);
+    margin-bottom: 20rpx;
 }
 
 .tip-qrcode-contnet {
-  margin-top: 50rpx;
-  border-radius: 26px;
-  border: 1px solid rgba(208, 208, 208, 1);
-  padding: 40rpx;
-  box-sizing: border-box;
+    margin-top: 50rpx;
+    border-radius: 26px;
+    border: 1px solid rgba(208, 208, 208, 1);
+    padding: 40rpx;
+    box-sizing: border-box;
 }
 
 .qrcode-sub-content {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .qrcode-desc {
-  font-size: 32rpx;
-  font-family: SourceHanSansCN-Normal, SourceHanSansCN;
-  color: rgba(58, 58, 58, 1);
-  margin-top: 27rpx;
+    font-size: 32rpx;
+    font-family: SourceHanSansCN-Normal, SourceHanSansCN;
+    color: rgba(58, 58, 58, 1);
+    margin-top: 27rpx;
 }
 
 .rqcode-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 30rpx;
-  box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30rpx;
+    box-sizing: border-box;
 }
 
 .qrcode-line {
-  width: 1rpx;
-  height: 197rpx;
-  background-color: #d0d0d0;
+    width: 1rpx;
+    height: 197rpx;
+    background-color: #d0d0d0;
 }
 
 .copy-btn {
-  width: 221rpx;
-  height: 51rpx;
-  background: rgba(255, 67, 119, 1);
-  border-radius: 26px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 32rpx;
-  font-family: SourceHanSansCN-Normal, SourceHanSansCN;
-  color: rgba(255, 255, 255, 1);
-  margin-top: 30rpx;
+    width: 221rpx;
+    height: 51rpx;
+    background: rgba(255, 67, 119, 1);
+    border-radius: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32rpx;
+    font-family: SourceHanSansCN-Normal, SourceHanSansCN;
+    color: rgba(255, 255, 255, 1);
+    margin-top: 30rpx;
 }
 
 .copy-title {
-  font-size: 32rpx;
-  font-family: SourceHanSansCN-Normal, SourceHanSansCN;
-  color: rgba(58, 58, 58, 1);
-  margin-bottom: 5rpx;
+    font-size: 32rpx;
+    font-family: SourceHanSansCN-Normal, SourceHanSansCN;
+    color: rgba(58, 58, 58, 1);
+    margin-bottom: 5rpx;
 }
 
 .tip-item-content {
-  font-size: 36rpx;
-  font-family: SourceHanSansCN-Normal, SourceHanSansCN;
-  color: rgba(90, 90, 90, 1);
+    font-size: 36rpx;
+    font-family: SourceHanSansCN-Normal, SourceHanSansCN;
+    color: rgba(90, 90, 90, 1);
 }
 
 .showwebg {
-  width: 100%;
-  height: 416rpx;
+    width: 100%;
+    height: 416rpx;
 }
 
 .showwe-info {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 416rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 416rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .showwe-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 33rpx 26rpx 0rpx 26rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 33rpx 26rpx 0rpx 26rpx;
 }
 
 .showwe-header-left {
-  font-size: 30rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
-  color: rgba(74, 74, 74, 1);
+    font-size: 30rpx;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(74, 74, 74, 1);
 }
 
 .showwe-header-left-sub {
-  color: #ff5c7e;
+    color: #ff5c7e;
 }
 
 .showwe-header-right {
-  font-size: 30rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
-  color: rgba(74, 74, 74, 1);
+    font-size: 30rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    color: rgba(74, 74, 74, 1);
 }
 
 .my-avatar {
-  width: 136rpx;
-  height: 136rpx;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.23);
-  border: 3px solid rgba(255, 255, 255, 1);
-  border-radius: 50%;
-  overflow: hidden;
-  z-index: 1;
+    width: 136rpx;
+    height: 136rpx;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.23);
+    border: 3px solid rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .redbg-info {
-  padding: 0 26rpx;
-  box-sizing: border-box;
-  position: absolute;
-  top: 168rpx;
+    padding: 0 26rpx;
+    box-sizing: border-box;
+    position: absolute;
+    top: 168rpx;
 }
 
 .redbg {
-  width: 697rpx;
-  height: 557rpx;
+    width: 697rpx;
+    height: 557rpx;
 }
 
 .run-data-info {
-  width: 697rpx;
-  position: absolute;
-  top: 90rpx;
+    width: 697rpx;
+    position: absolute;
+    top: 90rpx;
 }
 
 .user-nick-name {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 36rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.78);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36rpx;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.78);
 }
 
 .werunstep {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 14rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 14rpx;
 }
 
 .werunstepitem {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .werunnumber {
-  font-size: 50rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 1);
+    font-size: 50rpx;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
 }
 
 .werundes {
-  font-size: 28rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
-  color: rgba(255, 255, 255, 0.78);
+    font-size: 28rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    color: rgba(255, 255, 255, 0.78);
 }
 
 .werunline {
-  box-sizing: border-box;
-  padding: 0 65rpx;
-  height: 30rpx;
-  overflow: hidden;
-  white-space: nowrap;
-  margin-top: 19rpx;
-  color: #fff;
-  font-size: 20rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    box-sizing: border-box;
+    padding: 0 65rpx;
+    height: 30rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: 19rpx;
+    color: #fff;
+    font-size: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .weruninfotitle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 30rpx;
-  font-size: 42rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30rpx;
+    font-size: 42rpx;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
 }
 
 .weruninfotitlecontent {
-  width: 580rpx;
-  text-align: center;
+    width: 580rpx;
+    text-align: center;
 }
 
 .weruninfosubtitle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 30rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
-  margin-top: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30rpx;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 20rpx;
 }
 
 .werun-leaderboard {
-  position: relative;
-  width: 100%;
+    position: relative;
+    width: 100%;
 }
 
 .werun-leaderboard-info {
-  position: absolute;
-  top: 309rpx;
-  width: 100%;
-  padding: 40rpx 25rpx;
-  box-sizing: border-box;
+    position: absolute;
+    top: 309rpx;
+    width: 100%;
+    padding: 40rpx 25rpx;
+    box-sizing: border-box;
 }
 
 .werun-leaderboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .werun-leaderboard-line {
-  width: 100%;
-  height: 3rpx;
-  background-color: #c9c9c9;
+    width: 100%;
+    height: 3rpx;
+    background-color: #c9c9c9;
 }
 
 .werun-leaderboard-des {
-  font-size: 40rpx;
-  font-family: SourceHanSansCN-Normal, SourceHanSansCN;
-  color: rgba(90, 90, 90, 1);
-  width: 120rpx;
-  margin: 0 30rpx;
-  white-space: nowrap;
+    font-size: 40rpx;
+    font-family: SourceHanSansCN-Normal, SourceHanSansCN;
+    color: rgba(90, 90, 90, 1);
+    width: 120rpx;
+    margin: 0 30rpx;
+    white-space: nowrap;
 }
 
 .other-leaderboard {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 25rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 25rpx;
 }
 
 .other-leaderboard-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .other-leaderboard-favicon-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .other-leaderboard-favicon {
-  width: 120rpx;
-  height: 120rpx;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.23);
-  border-radius: 50%;
+    width: 120rpx;
+    height: 120rpx;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.23);
+    border-radius: 50%;
 }
 
 .other-leaderboard-name {
-  font-size: 36rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
-  color: rgba(74, 74, 74, 1);
-  margin-top: 21rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    font-size: 36rpx;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(74, 74, 74, 1);
+    margin-top: 21rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .other-leaderboard-step {
-  font-size: 30rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
-  color: rgba(255, 92, 126, 1);
-  margin-top: 2rpx;
+    font-size: 30rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    color: rgba(255, 92, 126, 1);
+    margin-top: 2rpx;
 }
 
 .other-leaderboard-ranking {
-  width: 155rpx;
-  height: 42rpx;
-  background: rgba(255, 255, 255, 1);
-  border-radius: 21px;
-  border: 1px solid rgba(255, 0, 97, 1);
-  margin-top: 8rpx;
-  font-size: 30rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
-  color: rgba(255, 92, 126, 1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 155rpx;
+    height: 42rpx;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 21px;
+    border: 1px solid rgba(255, 0, 97, 1);
+    margin-top: 8rpx;
+    font-size: 30rpx;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: rgba(255, 92, 126, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* .werun {
