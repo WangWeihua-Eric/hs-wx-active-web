@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/werun/werun"
+  ],
+  "window": {
+    "backgroundColor": "gainsboro",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "红松在线马拉松",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,139 @@
+<view>
+    <van-toast id="van-toast"/>
+    <van-dialog id="van-dialog"/>
+    <view wx:if="{{needUserInfo}}" class="need-user-info">
+        <view class="need-user-info-header">
+            <image class="need-user-info-header-img" src="../../images/logo.png"></image>
+            <view class="need-user-info-header-title" bindtap="onClickRule">活动规则</view>
+        </view>
+        <view>
+            <image class="bannerbg" src="../../images/bannerbg.png">
+                <view class="banner-info">
+                    <view class="banner-info-img-block">
+                        <image class="banner-info-img" src="../../images/banner-info.png"></image>
+                    </view>
+                    <view class="tip">
+                        <text>{{totalJoin}}人</text>
+                        <text class="tip-info">正在参与活动</text>
+                    </view>
+                </view>
+            </image>
+        </view>
+        <view class="run-info">
+            <image class="run-img" src="../../images/run.png"></image>
+        </view>
+        <view class="join">
+            <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="join-btn">立即参与</button>
+        </view>
+    </view>
+
+    <van-action-sheet show="{{ show }}" title="活动规则" bind:close="onClose">
+        <view class="tip-content">
+            <view class="tip-item">
+                <view class="tip-item-content">欢迎参与「红松学堂」在家马拉松🏃</view>
+            </view>
+
+            <view class="tip-item">
+                <view class="tip-item-content">抗疫宅家不无聊，红松陪你在家动！</view>
+            </view>
+
+            <view class="tip-item">
+                <view class="tip-item-content">每天在家走一走，晚10点我们会根据微信运动的步数记录，在红松学习群内统计大家的步数排名评选马拉松冠军哦！</view>
+            </view>
+
+            <view class="tip-item">
+                <view class="tip-item-content">第一名班主任奖励50元红包，第二名奖励30元红包、第三名奖励20元红包。</view>
+            </view>
+
+            <view class="tip-item">
+                <view class="tip-item-content">注：每晚10点公布名次，活动仅在红松学堂学员群内有效！谢谢您的支持与参与！</view>
+            </view>
+
+            <view class="tip-qrcode-contnet">
+                <view class="tip-qrcode-title">添加老师加入红松学习群参加活动</view>
+                <view class="qrcode-sub-content">
+                    <view class="qrcode-contnet">
+                        <image class="qrcode" src="../../images/chenqrcode.jpeg"></image>
+                        <view class="qrcode-desc">截屏扫描添加老师</view>
+                    </view>
+                    <view class="qrcode-line"></view>
+                    <view class="rqcode-info" bindtap="onCopyCode">
+                        <view class="copy-title">陈老师</view>
+                        <view class="copy-title">{{qrcode}}</view>
+                        <view class="copy-btn">复制微信号</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </van-action-sheet>
+
+    <view wx:if="{{werun}}" class="">
+        <view>
+            <view>
+                <image class="showwebg" src="../../images/showwebg.png">
+                    <view class="showwe-info">
+                        <view class="showwe-header">
+                            <view class="showwe-header-left">
+                                <text>本群有</text>
+                                <text class="showwe-header-left-sub">{{totalJoin}}人</text>
+                                <text>正在参与</text>
+                            </view>
+                            <!-- <view class="showwe-header-right">群总人数：300人</view> -->
+
+                            <view class="need-user-info-header-title" bindtap="onClickRule">活动规则</view>
+                        </view>
+                        <view class="my-avatar">
+                            <open-data type="userAvatarUrl"></open-data>
+                        </view>
+                    </view>
+                </image>
+            </view>
+            <view class="redbg-info">
+                <image class="redbg" src="../../images/redbg.png">
+                    <view class="run-data-info">
+                        <view class="user-nick-name">
+                            <open-data type="userNickName"></open-data>
+                        </view>
+                        <view class="werunstep">
+                            <view class="werunstepitem">
+                                <view class="werunnumber">{{step}}</view>
+                                <view class="werundes">当前步数</view>
+                            </view>
+                            <view class="werunstepitem">
+                                <view class="werunnumber">{{nowRank}}</view>
+                                <view class="werundes">群排名</view>
+                            </view>
+                        </view>
+                        <view class="werunline">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</view>
+                        <view class="weruninfotitle">
+                            <view class="weruninfotitlecontent">{{weruninfotitle}}</view>
+                        </view>
+                        <view class="weruninfosubtitle">
+                            继续加油哦～
+                        </view>
+                    </view>
+                </image>
+            </view>
+        </view>
+        <view class="werun-leaderboard">
+            <view class="werun-leaderboard-info">
+                <view class="werun-leaderboard-header">
+                    <view class="werun-leaderboard-line"></view>
+                    <view class="werun-leaderboard-des">排行榜</view>
+                    <view class="werun-leaderboard-line"></view>
+                </view>
+                <view class="other-leaderboard">
+
+                    <view wx:for="{{ listData }}" wx:for-item="item" wx:key="index" class="other-leaderboard-item">
+                        <view class="other-leaderboard-favicon-img">
+                            <image class="other-leaderboard-favicon" src="{{item.imgurl}}"></image>
+                        </view>
+                        <view class="other-leaderboard-name">{{item.nickname}}</view>
+                        <view class="other-leaderboard-step">步数：{{item.stepnumber}}</view>
+                        <view class="other-leaderboard-ranking">第 {{index + 1}} 名</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
