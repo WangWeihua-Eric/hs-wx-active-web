@@ -11,11 +11,13 @@ exports.main = async (event, context) => {
 
   const id = event.id
   const stepnumber = event.stepnumber
+  const updatetime = event.updatetime
 
   return await db.collection('todo').doc(id).update({
     // data 传入需要局部更新的数据
     data: {
-      stepnumber: stepnumber
+      stepnumber: stepnumber,
+      updatetime: updatetime
     }
   })
 }

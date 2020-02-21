@@ -22,10 +22,11 @@
         <view class="run-info">
             <image class="run-img" src="../../images/run.png"></image>
         </view>
-        <view class="join">
+        <view wx:if="{{joinActive}}" class="join">
             <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="join-btn">立即参与</button>
         </view>
     </view>
+
 
     <van-action-sheet show="{{ show }}" title="活动规则" bind:close="onClose">
         <view class="tip-content">
@@ -63,6 +64,14 @@
                         <view class="copy-btn">复制微信号</view>
                     </view>
                 </view>
+            </view>
+        </view>
+    </van-action-sheet>
+
+    <van-action-sheet show="{{ debug }}" title="debug" bind:close="onClose">
+        <view class="tip-content">
+            <view>
+                {{errorInfo}}
             </view>
         </view>
     </van-action-sheet>
@@ -123,16 +132,20 @@
                     <view class="werun-leaderboard-line"></view>
                 </view>
                 <view class="other-leaderboard">
-
                     <view wx:for="{{ listData }}" wx:for-item="item" wx:key="index" class="other-leaderboard-item">
                         <view class="other-leaderboard-favicon-img">
                             <image class="other-leaderboard-favicon" src="{{item.imgurl}}"></image>
                         </view>
-                        <view class="other-leaderboard-name">{{item.nickname}}</view>
+                        <view class="other-leaderboard-name">
+                            <view class="other-leaderboard-name-info">
+                                {{item.nickname}}
+                            </view>
+                        </view>
                         <view class="other-leaderboard-step">步数：{{item.stepnumber}}</view>
                         <view class="other-leaderboard-ranking">第 {{index + 1}} 名</view>
                     </view>
                 </view>
+                <button class="share-others" open-type='share'>分享给好友</button>
             </view>
         </view>
     </view>

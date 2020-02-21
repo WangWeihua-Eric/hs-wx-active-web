@@ -2,6 +2,9 @@
 
 import Toast from '@vant/weapp/toast/toast';
 import Dialog from '@vant/weapp/dialog/dialog';
+import {getWithWhere, getWithWhereOrderByLimit} from "../../utils/wx-utils/wx-db-utils";
+import {getSetting, getShareInfo, getStorage} from "../../utils/wx-utils/wx-base-utils";
+import {login} from "../../utils/wx-utils/wx-cloud-utils";
 
 const app = getApp()
 
@@ -32,7 +35,10 @@ Page({
         listData: [],
         nowRank: 0,
         opengid: '',
-        qrcode: 'hskt018'
+        qrcode: 'hskt018',
+        debug: false,
+        errorInfo: '',
+        joinActive: true
     },
 
     loopnumber: 0,
@@ -48,50 +54,81 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-        db.collection('qccode').where({
-            t: 'code'
-        })
-            .get({
-                success: (res) => {
-                    // res.data 是包含以上定义的两条记录的数组
-                    if (res && res.data && res.data.length) {
-                        const qrcode = res.data[0].qrcode;
-                        if (qrcode) {
-                            this.setData({
-                                qrcode: qrcode
-                            })
-                        }
-                    }
+        getWithWhere('qccode', {t: 'code'}).then(res => {
+            if (res && res.length) {
+                const qrcode = res[0].qrcode;
+                if (qrcode) {
+                    this.setData({
+                        qrcode: qrcode
+                    })
                 }
-            })
+            }
+        })
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
-
         wx.showShareMenu({
             withShareTicket: true
         })
 
-        wx.getSetting({
-            success: (res) => {
-                const needUserInfo = !res.authSetting['scope.userInfo']
-                if (needUserInfo) {
-                    this.getNeedUserInfo()
-                    this.setData({
-                        needUserInfo: needUserInfo,
-                        werun: false
-                    })
-                } else {
-                    this.getWeRunInfo()
-                    this.setData({
-                        werun: true,
-                        needUserInfo: false
-                    })
-                }
+        this.setData({
+            joinActive: true
+        })
+
+        const globalData = app.globalData;
+        const shareTicket = globalData.shareTicket;
+        const scene = globalData.scene;
+
+        login().then(loginRes => {
+
+            const openid = loginRes.result.openid
+
+            if (shareTicket) {
+                // 走正常逻辑
+                this.normalStep()
+            } else if (scene && scene === 1008) {
+                // 走企业微信群特殊 opengid,复用正常逻辑
+                const WXEnterpriseOpengid = 'WXEnterpriseOpengid'
+                this.setData({
+                    opengid: WXEnterpriseOpengid
+                })
+                this.normalStep()
+            } else {
+                // 查询上次群记录
+
+                getWithWhereOrderByLimit(
+                    'todo',
+                    {
+                        openid: openid
+                    },
+                    'updatetime',
+                    'desc',
+                    2
+                ).then(userWeRunInfo => {
+                    let lastOpengid = ''
+                    if (userWeRunInfo.length) {
+                        lastOpengid = userWeRunInfo[0].opengid
+                    }
+
+                    if (lastOpengid) {
+                        // 走正常逻辑
+                        this.setData({
+                            opengid: lastOpengid
+                        })
+                        this.normalStep()
+                    } else {
+                        // 引导进群
+                        this.setData({
+                            joinActive: false,
+                            needUserInfo: true,
+                            werun: false,
+                            show: true
+                        })
+                    }
+                })
             }
         })
     },
@@ -100,6 +137,9 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
+        this.setData({
+            opengid: ''
+        })
         try {
             wx.clearStorageSync()
         } catch (e) {
@@ -132,7 +172,15 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-
+        return {
+            title: '宅家马拉松',
+            imageUrl: '../../images/share.jpeg',
+            success: () => {
+                wx.showShareMenu({
+                    withShareTicket: true
+                })
+            }
+        }
     },
 
     bindGetUserInfo: function (e) {
@@ -178,56 +226,30 @@ Page({
     },
 
     readWerunShareTicket: function () {
-        if (this.timeHander) {
-            clearTimeout(this.timeHander)
-        }
-        wx.getStorage({
-            key: 'shareTicket',
-            success: (res) => {
-                this.loopnumber = 0;
-                const shareTicket = res.data;
-                wx.getShareInfo({
-                    shareTicket: shareTicket,
-                    success: (shareInfo) => {
-                        const cloudID = shareInfo.cloudID
-                        if (cloudID) {
-                            wx.cloud.callFunction({
-                                name: 'opengid',
-                                data: {
-                                    encryptedData: wx.cloud.CloudID(cloudID), // 这个 CloudID 值到云函数端会被替换
-                                    obj: {
-                                        shareInfo: wx.cloud.CloudID(cloudID), // 非顶层字段的 CloudID 不会被替换，会原样字符串展示
-                                    }
-                                },
-                                success: (encryptedDataRes) => {
-                                    const opengid = encryptedDataRes.result.openGId.encryptedData.data.openGId
-                                    if (opengid) {
-                                        this.setData({
-                                            opengid: opengid
-                                        })
-                                        //  获取详情
-                                        this.getWeRunInfoNext()
-                                    }
-                                }
+        const shareTicket = app.globalData.shareTicket
+
+        getShareInfo(shareTicket).then(shareInfo => {
+            const cloudID = shareInfo.cloudID
+            if (cloudID) {
+                wx.cloud.callFunction({
+                    name: 'opengid',
+                    data: {
+                        encryptedData: wx.cloud.CloudID(cloudID), // 这个 CloudID 值到云函数端会被替换
+                        obj: {
+                            shareInfo: wx.cloud.CloudID(cloudID), // 非顶层字段的 CloudID 不会被替换，会原样字符串展示
+                        }
+                    },
+                    success: (encryptedDataRes) => {
+                        const opengid = encryptedDataRes.result.openGId.encryptedData.data.openGId
+                        if (opengid) {
+                            this.setData({
+                                opengid: opengid
                             })
+                            //  获取详情
+                            this.getWeRunInfoNext()
                         }
                     }
                 })
-            },
-            fail: () => {
-                this.timeHander = setTimeout(() => {
-                    if (this.loopnumber < 100) {
-                        this.loopnumber++
-                        this.readWerunShareTicket()
-                    } else {
-                        Toast.clear()
-                        Dialog.alert({
-                            message: '您还不是红松学习群的成员，暂时无法参与我们的活动哦～'
-                        }).then(() => {
-                            // on close
-                        });
-                    }
-                }, 100)
             }
         })
     },
@@ -273,7 +295,8 @@ Page({
             name: 'dbupdate',
             data: {
                 id: id,
-                stepnumber: stepnumber
+                stepnumber: stepnumber,
+                updatetime: new Date().getTime()
             },
             success: () => {
                 const opengid = this.data.opengid
@@ -336,61 +359,39 @@ Page({
     },
 
     getNeedUserInfo: function () {
-        if (this.timeHander) {
-            clearTimeout(this.timeHander)
-        }
-        wx.getStorage({
-            key: 'shareTicket',
-            success: (res) => {
-                this.loopnumber = 0;
-                const shareTicket = res.data;
+        const shareTicket = app.globalData.shareTicket
 
-                wx.getShareInfo({
-                    shareTicket: shareTicket,
-                    success: (shareInfo) => {
-                        const cloudID = shareInfo.cloudID
-                        if (cloudID) {
-                            wx.cloud.callFunction({
-                                name: 'opengid',
-                                data: {
-                                    encryptedData: wx.cloud.CloudID(cloudID), // 这个 CloudID 值到云函数端会被替换
-                                    obj: {
-                                        shareInfo: wx.cloud.CloudID(cloudID), // 非顶层字段的 CloudID 不会被替换，会原样字符串展示
-                                    }
-                                },
-                                success: (encryptedDataRes) => {
-                                    const opengid = encryptedDataRes.result.openGId.encryptedData.data.openGId
-                                    if (opengid) {
+        if (shareTicket) {
+            getShareInfo(shareTicket).then(shareInfo => {
+                const cloudID = shareInfo.cloudID
+                if (cloudID) {
+                    wx.cloud.callFunction({
+                        name: 'opengid',
+                        data: {
+                            encryptedData: wx.cloud.CloudID(cloudID), // 这个 CloudID 值到云函数端会被替换
+                            obj: {
+                                shareInfo: wx.cloud.CloudID(cloudID), // 非顶层字段的 CloudID 不会被替换，会原样字符串展示
+                            }
+                        },
+                        success: (encryptedDataRes) => {
+                            const opengid = encryptedDataRes.result.openGId.encryptedData.data.openGId
+                            if (opengid) {
 
-                                        this.setData({
-                                            opengid: opengid
-                                        })
+                                this.setData({
+                                    opengid: opengid
+                                })
 
-                                        this.setTotalJoin()
-                                    }
-                                }
-                            })
+                                this.setTotalJoin()
+                            }
                         }
-                    }
-                })
-            },
-            fail: (res) => {
-                this.timeHander = setTimeout(() => {
-                    if (this.loopnumber < 100) {
-                        this.loopnumber++
-                        this.getNeedUserInfo()
-                    } else {
-                        Toast.clear()
-                        Dialog.alert({
-                            message: '您还不是红松学习群的成员，暂时无法参与我们的活动哦～'
-                        }).then(() => {
-                            // on close
-                        });
-                    }
-                }, 100)
-            }
-        })
+                    })
+                }
+            })
+        } else if (this.data.opengid) {
+            this.setTotalJoin()
+        }
     },
+
     getWeRunInfoNext: function () {
         wx.cloud.callFunction({
             name: 'login',
@@ -486,5 +487,26 @@ Page({
                 })
             }
         })
-    }
+    },
+
+    /**
+     * 正常流程
+     */
+    normalStep: function () {
+        getSetting('scope.userInfo').then(userInfo => {
+            if (!userInfo) {
+                this.getNeedUserInfo()
+                this.setData({
+                    needUserInfo: !userInfo,
+                    werun: false
+                })
+            } else {
+                this.getWeRunInfo()
+                this.setData({
+                    werun: true,
+                    needUserInfo: false
+                })
+            }
+        })
+    },
 })

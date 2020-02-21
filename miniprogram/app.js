@@ -1,5 +1,9 @@
 //app.js
 App({
+    globalData: {
+        scene: 0,
+        shareTicket: ''
+    },
     onLaunch: function (res) {
 
         if (!wx.cloud) {
@@ -18,13 +22,7 @@ App({
         this.globalData = {}
     },
     onShow: function (res) {
-        const shareTicket = res.shareTicket
-        if (shareTicket) {
-
-            wx.setStorage({
-                key: "shareTicket",
-                data: shareTicket
-            })
-        }
+        this.globalData.scene = res.scene;
+        this.globalData.shareTicket = res.shareTicket;
     }
 })

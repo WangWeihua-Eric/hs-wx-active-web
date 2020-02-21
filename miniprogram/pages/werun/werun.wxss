@@ -1,6 +1,6 @@
 Page {
     height: 100%;
-    background: linear-gradient(180deg, rgba(238, 238, 238, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    /*background: linear-gradient(180deg, rgba(238, 238, 238, 1) 0%, rgba(255, 255, 255, 1) 100%);*/
 }
 
 .need-user-info-header {
@@ -419,6 +419,15 @@ Page {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: nowrap;
+}
+
+.other-leaderboard-name-info {
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    width: 160rpx;
+    text-align: center;
 }
 
 .other-leaderboard-step {
@@ -444,96 +453,15 @@ Page {
     align-items: center;
 }
 
-/* .werun {
-  padding: 40rpx 40rpx 0 40rpx;
-  height: 100%;
+.share-others {
+    margin-top: 40rpx;
+    height: 69rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 35px;
+    border: 1px solid rgba(255, 92, 126, 1);
+    font-size: 30rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    color: rgba(255, 92, 126, 1);
 }
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-left {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.header-start {
-  width: 6rpx;
-  height: 60rpx;
-  background-color: black;
-}
-
-.header-title {
-  margin-left: 20rpx;
-}
-
-.title {
-  font-size: 30rpx;
-}
-
-.sub-title {
-  font-size: 20rpx;
-}
-
-.header-right {
-  color: orange;
-  font-size: 20rpx;
-}
-
-.leaderboard {
-  width: 100%;
-  background-color: white;
-  border-radius: 4px;
-  height: 85%;
-  margin-top: 80rpx;
-  padding: 20rpx 40rpx;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.werun-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1rpx solid gainsboro;
-  padding: 20rpx 0;
-  width: 100%;
-}
-
-.werun-left {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.werun-id {
-  font-size: 30rpx;
-}
-
-.werun-avatar {
-  width: 60rpx;
-  height: 60rpx;
-  margin-left: 20rpx;
-  border-radius: 3px;
-}
-
-.werun-name {
-  margin-left: 20rpx;
-}
-
-.werun-step {
-  color: rgb(93, 168, 93);
-}
-
-.login-out {
-  font-size: 25rpx;
-  color: gainsboro;
-  margin-bottom: 20rpx;
-} */

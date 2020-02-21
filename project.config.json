@@ -57,15 +57,30 @@
 					"query": ""
 				},
 				{
+					"id": 1,
+					"name": "无 ticket",
+					"pathName": "pages/werun/werun",
+					"query": "",
+					"scene": 1001
+				},
+				{
 					"id": -1,
 					"name": "pages/werun/werun",
 					"pathName": "pages/werun/werun",
+					"query": "",
 					"scene": 1044,
 					"shareInfo": {
 						"groupName": "测试模拟群0",
 						"shareName": "5IVglwrcaJ8-1AoCES-dsYy8Za5AcMge8BF_WR1Z2vc@cr4dev",
-						"shareKey": "61tOdHGqlbdIBx4s5WHmMFF2D9TXJi1SqtK6LrGBlHvIKz4waK1OUvwiVaoJJlwthkwqTKjYUL9YqfOmBtpFHw~~"
+						"shareKey": "uV9QgisSxxinwY2Yxg8AWDJSErRfdLF937wl-muYQEqYtRZQJSXw-1eoqD1S-_FDlYE--DfhOSi5QpRnT1XHAQ~~"
 					}
+				},
+				{
+					"id": -1,
+					"name": "企业微信群聊",
+					"pathName": "pages/werun/werun",
+					"query": "",
+					"scene": 1008
 				}
 			]
 		}
