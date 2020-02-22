@@ -1,7 +1,6 @@
 // pages/werun/werun.js
 
 import Toast from '@vant/weapp/toast/toast';
-import Dialog from '@vant/weapp/dialog/dialog';
 import {getWithWhere, getWithWhereOrderByLimit} from "../../utils/wx-utils/wx-db-utils";
 import {getSetting, getShareInfo, getStorage} from "../../utils/wx-utils/wx-base-utils";
 import {login} from "../../utils/wx-utils/wx-cloud-utils";
