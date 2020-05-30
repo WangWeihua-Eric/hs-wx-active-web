@@ -9,5 +9,8 @@
     "navigationBarTitleText": "红松在线马拉松",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList": [
+    "wxa7740225caabc3ea"
+  ]
 }

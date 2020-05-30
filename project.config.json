@@ -20,7 +20,8 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useCompilerModule": false
 	},
 	"appid": "wx2782db102e2cb75f",
 	"projectname": "hs-cloud-wx-web",
@@ -64,7 +65,7 @@
 					"scene": 1001
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "pages/werun/werun",
 					"pathName": "pages/werun/werun",
 					"query": "",

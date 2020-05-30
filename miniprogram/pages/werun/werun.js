@@ -187,9 +187,18 @@ Page({
     },
 
     onClickRule: function () {
-        this.setData({
-            show: true
-        })
+        // this.setData({
+        //     show: true
+        // })
+
+      wx.navigateToMiniProgram({
+        appId: 'wxa7740225caabc3ea',
+        path: 'pages/schedule/schedule?from=6',
+        success(res) {
+          // 打开成功
+        }
+      })
+
     },
 
     onClose() {
@@ -374,7 +383,9 @@ Page({
                         },
                         success: (encryptedDataRes) => {
                             const opengid = encryptedDataRes.result.openGId.encryptedData.data.openGId
+                            console.log(encryptedDataRes)
                             if (opengid) {
+                                console.log(opengid)
 
                                 this.setData({
                                     opengid: opengid
@@ -396,6 +407,7 @@ Page({
             name: 'login',
             data: {},
             success: res => {
+                console.log('res: ', res)
                 const openid = res.result.openid
                 if (openid) {
                     this.setData({
@@ -408,6 +420,7 @@ Page({
                                 // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
                                 wx.getUserInfo({
                                     success: res => {
+                                        console.log(res)
                                         this.setData({
                                             avatarUrl: res.userInfo.avatarUrl,
                                             userInfo: res.userInfo
