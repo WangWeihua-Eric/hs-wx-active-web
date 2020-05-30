@@ -192,8 +192,6 @@ Page({
      */
     onShareAppMessage: function () {
         return {
-            title: '宅家马拉松',
-            imageUrl: '../../images/share.jpeg',
             success: () => {
                 wx.showShareMenu({
                     withShareTicket: true
