@@ -25,7 +25,7 @@ Page({
         userInfo: {},
         step: 0,
         openid: '',
-        needUserInfo: false,
+        needUserInfo: true,
         werun: false,
         show: false,
         content: '',
@@ -37,7 +37,8 @@ Page({
         qrcode: 'hskt018',
         debug: false,
         errorInfo: '',
-        joinActive: true
+        joinActive: true,
+        inreview: true
     },
 
     loopnumber: 0,
@@ -69,6 +70,25 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+
+        getWithWhere('inreviewBackUp', {position: 'inreview'}).then(inReviewRes => {
+            if (inReviewRes.length) {
+                const inReviewInfo = inReviewRes[0]
+                if (inReviewInfo.inreview) {
+                    //  审核中
+                    this.setData({
+                        inreview: true
+                    })
+                } else {
+                    //  未审核
+                    this.setData({
+                        inreview: false
+                    })
+                }
+            }
+        })
+
+
         wx.showShareMenu({
             withShareTicket: true
         })
@@ -81,55 +101,55 @@ Page({
         const shareTicket = globalData.shareTicket;
         const scene = globalData.scene;
 
-        login().then(loginRes => {
-
-            const openid = loginRes.result.openid
-
-            if (shareTicket) {
-                // 走正常逻辑
-                this.normalStep()
-            } else if (scene && scene === 1008) {
-                // 走企业微信群特殊 opengid,复用正常逻辑
-                const WXEnterpriseOpengid = 'WXEnterpriseOpengid'
-                this.setData({
-                    opengid: WXEnterpriseOpengid
-                })
-                this.normalStep()
-            } else {
-                // 查询上次群记录
-
-                getWithWhereOrderByLimit(
-                    'todo',
-                    {
-                        openid: openid
-                    },
-                    'updatetime',
-                    'desc',
-                    2
-                ).then(userWeRunInfo => {
-                    let lastOpengid = ''
-                    if (userWeRunInfo.length) {
-                        lastOpengid = userWeRunInfo[0].opengid
-                    }
-
-                    if (lastOpengid) {
-                        // 走正常逻辑
-                        this.setData({
-                            opengid: lastOpengid
-                        })
-                        this.normalStep()
-                    } else {
-                        // 引导进群
-                        this.setData({
-                            joinActive: false,
-                            needUserInfo: true,
-                            werun: false,
-                            show: true
-                        })
-                    }
-                })
-            }
-        })
+        // login().then(loginRes => {
+        //
+        //     const openid = loginRes.result.openid
+        //
+        //     if (shareTicket) {
+        //         // 走正常逻辑
+        //         this.normalStep()
+        //     } else if (scene && scene === 1008) {
+        //         // 走企业微信群特殊 opengid,复用正常逻辑
+        //         const WXEnterpriseOpengid = 'WXEnterpriseOpengid'
+        //         this.setData({
+        //             opengid: WXEnterpriseOpengid
+        //         })
+        //         this.normalStep()
+        //     } else {
+        //         // 查询上次群记录
+        //
+        //         getWithWhereOrderByLimit(
+        //             'todo',
+        //             {
+        //                 openid: openid
+        //             },
+        //             'updatetime',
+        //             'desc',
+        //             2
+        //         ).then(userWeRunInfo => {
+        //             let lastOpengid = ''
+        //             if (userWeRunInfo.length) {
+        //                 lastOpengid = userWeRunInfo[0].opengid
+        //             }
+        //
+        //             if (lastOpengid) {
+        //                 // 走正常逻辑
+        //                 this.setData({
+        //                     opengid: lastOpengid
+        //                 })
+        //                 this.normalStep()
+        //             } else {
+        //                 // 引导进群
+        //                 this.setData({
+        //                     joinActive: false,
+        //                     needUserInfo: true,
+        //                     werun: false,
+        //                     show: true
+        //                 })
+        //             }
+        //         })
+        //     }
+        // })
     },
 
     /**
@@ -187,18 +207,9 @@ Page({
     },
 
     onClickRule: function () {
-        // this.setData({
-        //     show: true
-        // })
-
-      wx.navigateToMiniProgram({
-        appId: 'wxa7740225caabc3ea',
-        path: 'pages/schedule/schedule?from=6',
-        success(res) {
-          // 打开成功
-        }
-      })
-
+        this.setData({
+            show: true
+        })
     },
 
     onClose() {
@@ -521,4 +532,12 @@ Page({
             }
         })
     },
+
+
+    onToJoin() {
+        const url = `../regidtered/index`
+        wx.navigateTo({
+            url: url
+        })
+    }
 })

@@ -2,7 +2,10 @@
 App({
     globalData: {
         scene: 0,
-        shareTicket: ''
+        shareTicket: '',
+        userInfo: null,
+        headerHeight: 0,
+        statusBarHeight: 0
     },
     onLaunch: function (res) {
 
@@ -19,7 +22,22 @@ App({
             })
         }
 
-        this.globalData = {}
+        const {model, system, statusBarHeight} = wx.getSystemInfoSync();
+        const menuButtonInfo = wx.getMenuButtonBoundingClientRect()
+        var headHeight;
+        if (/iphone\s{0,}x/i.test(model)) {
+            headHeight = 88;
+        } else if (system.indexOf('Android') !== -1) {
+            headHeight = 68;
+        } else {
+            headHeight = 64;
+        }
+
+        this.globalData = {
+            headerHeight: headHeight,
+            statusBarHeight: statusBarHeight,
+            menuButtonInfo: menuButtonInfo
+        }
     },
     onShow: function (res) {
         this.globalData.scene = res.scene;

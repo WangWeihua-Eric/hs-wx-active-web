@@ -1,29 +1,32 @@
 <view>
     <van-toast id="van-toast"/>
     <van-dialog id="van-dialog"/>
-    <view wx:if="{{needUserInfo}}" class="need-user-info">
+    <view class="need-user-info">
         <view class="need-user-info-header">
             <image class="need-user-info-header-img" src="../../images/logo.png"></image>
-            <view class="need-user-info-header-title" bindtap="onClickRule">活动规则</view>
+            <!--            <view class="need-user-info-header-title" bindtap="onClickRule">活动规则</view>-->
         </view>
         <view>
             <image class="bannerbg" src="../../images/bannerbg.png">
                 <view class="banner-info">
                     <view class="banner-info-img-block">
-                        <image class="banner-info-img" src="../../images/banner-info.png"></image>
+                        <image wx:if="{{inreview}}" class="banner-info-img" src="../../images/banner-info.png"></image>
+                        <image wx:if="{{!inreview}}" class="banner-info-img"
+                               src="../../images/banner-info-temp.png"></image>
                     </view>
-                    <view class="tip">
-                        <text>{{totalJoin}}人</text>
-                        <text class="tip-info">正在参与活动</text>
-                    </view>
+                    <!--                    <view class="tip">-->
+                    <!--                        <text>{{totalJoin}}人</text>-->
+                    <!--                        <text class="tip-info">正在参与活动</text>-->
+                    <!--                    </view>-->
                 </view>
             </image>
         </view>
         <view class="run-info">
             <image class="run-img" src="../../images/run.png"></image>
         </view>
-        <view wx:if="{{joinActive}}" class="join">
-            <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="join-btn">立即参与</button>
+        <view class="join">
+            <button wx:if="{{!inreview}}" bind:tap="onToJoin" class="join-btn">现在加入</button>
+            <button wx:if="{{inreview}}" bind:tap="onClickRule" class="join-btn">现在加入</button>
         </view>
     </view>
 
@@ -48,22 +51,6 @@
 
             <view class="tip-item">
                 <view class="tip-item-content">注：每晚10点公布名次，活动仅在红松学堂学员群内有效！谢谢您的支持与参与！</view>
-            </view>
-
-            <view class="tip-qrcode-contnet">
-                <view class="tip-qrcode-title">添加老师加入红松学习群参加活动</view>
-                <view class="qrcode-sub-content">
-                    <view class="qrcode-contnet">
-                        <image class="qrcode" src="../../images/chenqrcode.jpeg"></image>
-                        <view class="qrcode-desc">截屏扫描添加老师</view>
-                    </view>
-                    <view class="qrcode-line"></view>
-                    <view class="rqcode-info" bindtap="onCopyCode">
-                        <view class="copy-title">陈老师</view>
-                        <view class="copy-title">{{qrcode}}</view>
-                        <view class="copy-btn">复制微信号</view>
-                    </view>
-                </view>
             </view>
         </view>
     </van-action-sheet>

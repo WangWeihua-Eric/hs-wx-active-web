@@ -1,16 +1,14 @@
 {
   "pages": [
-    "pages/werun/werun"
+    "pages/werun/werun",
+    "pages/regidtered/index"
   ],
   "window": {
-    "backgroundColor": "gainsboro",
+    "backgroundColor": "#FFFFFF",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FFFFFF",
-    "navigationBarTitleText": "红松在线马拉松",
+    "navigationBarTitleText": "红松活动",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json",
-  "navigateToMiniProgramAppIdList": [
-    "wxa7740225caabc3ea"
-  ]
+  "sitemapLocation": "sitemap.json"
 }

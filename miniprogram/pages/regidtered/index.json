@@ -1,0 +1,13 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "van-field": "@vant/weapp/field/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-overlay": "@vant/weapp/overlay/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-count-down": "@vant/weapp/count-down/index",
+    "van-popup": "@vant/weapp/popup/index"
+  }
+}

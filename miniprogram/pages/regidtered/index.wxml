@@ -1,0 +1,143 @@
+<view class="content">
+    <view class="register-text">
+        <view class="step-con">
+            <view hidden="{{!stepArr[step].back}}">
+                <van-icon class="step-left" name="arrow-left" bindtap="forwardStep"/>
+            </view>
+
+            <view class="step-title">{{stepArr[step].title}}</view>
+        </view>
+        <view class="step-text sku" hidden="{{!stepArr[0].show}}">
+            <view class="step-mark-text">
+                <view class="step-tag {{item.checked?'tagChecked':''}}"
+                      catch:tap="changeSku"
+                      data-index="{{index}}"
+                      data-add="{{item.add || false}}"
+                      wx:for="{{tagList}}" wx:key="key">{{item.name}}
+                </view>
+                <view class="step-tag" bindtap="stepAdd" wx:if="{{addTag}}">
+                    <van-icon name="plus" size="25px" color="#969696"/>
+                </view>
+            </view>
+
+        </view>
+        <!--        <view class="step-text" hidden="{{!stepArr[1].show}}">-->
+        <!--            <van-uploader  class="sub-avater-img" size="150px" preview-size="200" file-list="{{ fileList }}" bind:after-read="afterRead" />-->
+
+        <!--        </view>-->
+
+        <view class="step-text message " hidden="{{!stepArr[1].show}}">
+            <view class="step-phone-input f-js-ac">
+                <view class="label">姓名</view>
+                <van-field
+                        input-class="inputC"
+                        placeholder-style="font-size:26rpx; font-family:Helvetica; color:rgba(166,166,166,1);"
+                        custom-style="background-color: rgba(0, 0, 0, 0);flex:1;"
+                        value="{{ perInfo.name }}"
+                        placeholder="输入您的姓名"
+                        border="{{ false }}"
+                        data-type="name"
+                        bind:change="onChange"
+                        bind:input="onInput"
+                />
+            </view>
+            <view class="step-phone-input f-js-ac">
+                <view class="label">身份</view>
+                <van-field
+                        input-class="inputC"
+                        placeholder-style="font-size:26rpx; font-family:Helvetica; color:rgba(166,166,166,1);"
+                        custom-style="background-color: rgba(0, 0, 0, 0);"
+
+                        value="{{ perInfo.epithet }}"
+                        maxlength="20"
+                        placeholder="20字以内，例如：某老年大学教师"
+                        border="{{ false }}"
+                        data-type="epithet"
+                        bind:change="onChange"
+                />
+            </view>
+            <view class="step-phone-input f-js-ac">
+                <view class="label">手机号</view>
+                <van-field
+                        input-class="inputC"
+                        placeholder-style="font-size:26rpx; font-family:Helvetica; color:rgba(166,166,166,1);"
+                        custom-style="background-color: rgba(0, 0, 0, 0);"
+                        value="{{ perInfo.phone }}"
+                        placeholder="审核通过后用该手机号登录开播"
+                        border="{{ false }}"
+                        data-type="phone"
+                        bind:change="onChange"
+                />
+            </view>
+            <view class="step-phone-input f-js-ac">
+                <view class="label">密码</view>
+                <van-field
+                        placeholder-style="font-size:26rpx; font-family:Helvetica; color:rgba(166,166,166,1);"
+                        custom-style="background-color: rgba(0, 0, 0, 0);"
+                        value="{{ perInfo.pass }}"
+                        password="{{true}}"
+                        placeholder="请输入密码"
+                        border="{{ false }}"
+                        data-type="pass"
+                        bind:change="onChange"
+                        maxlength="16"
+                />
+            </view>
+            <view class="step-phone-input f-js-ac">
+                <view class="label">验证码</view>
+                <van-field
+                        input-class="inputC"
+                        placeholder-style="font-size:26rpx; font-family:Helvetica; color:rgba(166,166,166,1);"
+                        custom-style="background-color: rgba(0, 0, 0, 0);"
+                        value="{{ perInfo.code }}"
+                        placeholder="请输入验证码"
+                        border="{{ false }}"
+                        data-type="code"
+                        bind:change="onChange"
+                />
+                <view class="step-code" bindtap="codeOff" wx:if="{{showCode}}">获取验证码</view>
+                <view class="step-code-item" wx:if="{{!showCode}}">
+                    <van-count-down time="{{ time }}" format="sss" bind:finish="finished"/>
+                </view>
+            </view>
+
+        </view>
+
+        <view class="step-text" hidden="{{!stepArr[2].show}}">
+            <view class="step-submit">
+                <image class="submit-img"
+                       src="https://images-1300484082.cos.ap-chengdu.myqcloud.com/micro/caster/submit.png"></image>
+                <view class="submit-success">提交成功</view>
+                <view class="submit-success-text">审核通过后</view>
+                <view class="submit-success-text">我们会电话联系您培训和开播</view>
+                <view class="next-step" bindtap="backHome">返回首页</view>
+            </view>
+        </view>
+
+        <view class="next-step {{(step == 0 && !curTag) || (step == 1 && !accountCheck)?'nextDisabled':''}}"
+              bindtap="nextStep" hidden="{{step == 2}}">下一步
+        </view>
+
+        <van-popup show="{{ show }}" bind:close="onClickHide">
+            <view class="wrapper">
+                <view class="block">
+                    <view class="step-tag-item f-js-ac">
+                        <van-field
+                                placeholder-style="font-size:26rpx; font-family:Helvetica; color:rgba(166,166,166,1);"
+                                custom-style="background-color: rgba(0, 0, 0, 0);"
+                                value="{{ newTag }}"
+                                placeholder="请输入标签"
+                                maxlength="{{4}}"
+                                border="{{ false }}"
+                                bind:change="onNewTag"
+                        />
+                    </view>
+                    <van-button type="primary" size="mini" class="confirm" bindtap="confirmTag">确定</van-button>
+                </view>
+            </view>
+        </van-popup>
+
+
+    </view>
+    <van-toast id="van-toast"/>
+</view>
